@@ -17,12 +17,11 @@ list_of_files=[
     f"src/{project_name}/constants/__init__.py",
     "config/config.yaml",
     "dvc.yaml",
-    "riquirements.txt",
+    "requirements.txt",
     "setup.py",
     "research/trials.ipynb",
     "templates/index.html",
-    "params.yaml",
-    "test.py"
+    "params.yaml"
 ]
 for filepath in list_of_files:
     filepath=Path(filepath)

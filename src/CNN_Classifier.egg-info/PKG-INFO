@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: CNN-Classifier
+Version: 0.0.0
+Summary: A small python package for CNN-Classifier
+Home-page: htps://github.com/Radhwen-HAJRI/Kidney-disease-classification
+Author: Radhwen-HAJRI
+Author-email: hajriradhwen@hotmail.com
+Project-URL: Bug Tracker, htps://github.com/Radhwen-HAJRI/Kidney-disease-classification/issues
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: project-url
+Dynamic: summary
+
+# Kidney-disease-classification
