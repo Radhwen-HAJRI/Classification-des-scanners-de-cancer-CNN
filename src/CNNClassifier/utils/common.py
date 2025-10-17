@@ -24,9 +24,11 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise e 
     
 
-@ensure_annotations
-def create_directories(path_to_directories: list[Path]) -> None:
+
+def create_directories(path_to_directories: list) -> None:  # <-- juste list
+    from pathlib import Path
     for path in path_to_directories:
+        path = Path(path)  # convertit str en Path si nécessaire
         os.makedirs(path, exist_ok=True)
         logging.info(f"created directory at: {path}")
 
@@ -68,3 +70,7 @@ def decodeImage(b64_string: str, output_path: Path) -> None:
     with open(output_path, "wb") as img_file:
         img_file.write(img_data)
     logging.info(f"Image decoded and saved at: {output_path}")
+
+def get_size(path: Path) -> str:
+    size_in_kb = round(os.path.getsize(path) / 1024)
+    return f"~ {size_in_kb} KB"

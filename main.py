@@ -1,10 +1,14 @@
-import sys
-import os
+from src.CNNClassifier import logging
+from src.CNNClassifier.pipeline.stage_01_data_ingetion import DataIngestionTrainingPipeline
 
-# Ajouter src au path pour que Python trouve le package CNNClassifier
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
-from src.CNNClassifier.log_config import logging
 
-logging.info("This is a log message from main.py")
-print("Log message written successfully!")
+STAGE_NAME = "Data Ingestion Stage"
+try:
+    logging.info(f">>>>> stage {STAGE_NAME} started <<<<<")
+    obj = DataIngestionTrainingPipeline()
+    obj.main()
+    logging.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx==========x")
+except Exception as e:
+    logging.exception(e)
+    raise e
