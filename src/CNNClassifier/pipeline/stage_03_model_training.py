@@ -17,15 +17,15 @@ class ModelTrainingPipeline:
         model_trainer = Training(config=model_training_config)
         model_trainer.get_base_model()
 
-        # 🟢 Déplacement des dossiers avant la création du générateur
+        
         root_source = Path("artifacts/data_ingestion/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone")
         base_source = root_source / "CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone"
         base_target = Path("artifacts/data_ingestion/kidney-ct-scan-image")
 
-        # Crée le dossier cible
+        
         base_target.mkdir(parents=True, exist_ok=True)
 
-        # Déplace uniquement Normal et Tumor
+        
         for cls in ["Normal", "Tumor"]:
             src = base_source / cls
             dst = base_target / cls
@@ -37,10 +37,10 @@ class ModelTrainingPipeline:
 
         logging.info(f"Contenu final de {base_target}: {[p.name for p in base_target.iterdir()]}")
 
-        # 🟢 Maintenant on peut créer le générateur
+        
         model_trainer.train_valid_generator()
 
-        # Entraînement
+        
         model_trainer.train()
 
 

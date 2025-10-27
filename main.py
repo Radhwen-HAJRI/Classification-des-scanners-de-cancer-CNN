@@ -2,6 +2,8 @@ from src.CNNClassifier import logging
 from src.CNNClassifier.pipeline.stage_01_data_ingetion import DataIngestionTrainingPipeline
 from src.CNNClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from src.CNNClassifier.pipeline.stage_03_model_training import ModelTrainingPipeline
+from src.CNNClassifier.pipeline.stage_04_model_evaluation import ModelEvaluationPipeline
+
 
 STAGE_NAME = "Data Ingestion Stage"
 try:
@@ -30,6 +32,17 @@ STAGE_NAME = "Model Training"
 try:
     logging.info(f">>>>> stage {STAGE_NAME} started <<<<<")
     obj = ModelTrainingPipeline()
+    obj.main()
+    logging.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx==========x")
+except Exception as e:
+    logging.exception(e)
+    raise e
+
+STGE_NAME = "Model Evaluation"
+
+try:
+    logging.info(f">>>>> stage {STAGE_NAME} started <<<<<")   
+    obj = ModelEvaluationPipeline()
     obj.main()
     logging.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx==========x")
 except Exception as e:
