@@ -50,11 +50,13 @@ class ConfigurationManager:
         )
         
         return prepare_base_model_config
+    
     def get_training_config(self) -> TrainingConfig:
         training =  self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data= os.path.join(self.config.data_ingestion.unzip_dir,"kidney-ct-scan-image")
+        # CORRECTION : Utilisez le nouveau chemin de préparation des données
+        training_data= os.path.join("artifacts", "data_preparation", "kidney-ct-scan-image")
         create_directories(
             [Path(training.root_dir)]
         )
@@ -71,9 +73,10 @@ class ConfigurationManager:
         return training_config
     
     def get_evaluation_config(self)-> EvaluationConfig:
+        # CORRECTION : Utilisez le nouveau chemin de préparation des données
         eval_config = EvaluationConfig(
             path_of_model=r"artifacts\training\trained_model.h5",
-            training_data=r"artifacts\data_ingestion\kidney-ct-scan-image",
+            training_data=r"artifacts\data_preparation\kidney-ct-scan-image",  # Chemin corrigé
             mlflow_uri="https://dagshub.com/Radhwen-HAJRI/Kidney-disease-classification.mlflow",
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,

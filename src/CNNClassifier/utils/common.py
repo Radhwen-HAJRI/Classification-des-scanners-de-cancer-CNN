@@ -7,7 +7,7 @@ import joblib
 from box import ConfigBox
 from ensure import ensure_annotations
 from pathlib import Path
-from typing import Any
+from typing import Any,Dict
 import base64
 
 
@@ -33,8 +33,8 @@ def create_directories(path_to_directories: list) -> None:  # <-- juste list
         logging.info(f"created directory at: {path}")
 
 
-@ensure_annotations
-def save_json(path: Path, data: dict[str, Any]) -> None:
+
+def save_json(path: Path, data: dict) -> None:
     with open(path, "w") as json_file:
         json.dump(data, json_file, indent=4)
     logging.info(f"json file saved at: {path}")

@@ -46,7 +46,7 @@ class Evaluation:
             "loss":self.score[0],
             "accuracy":self.score[1]
         }
-        save_json(path=Path("scores.json"),data=score)
+        save_json(path=Path("score.json"),data=score)
     def log_into_mlflow(self):
         os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/Radhwen-HAJRI/Kidney-disease-classification.mlflow"
         os.environ["MLFLOW_TRACKING_USERNAME"]="Radhwen-HAJRI"

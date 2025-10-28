@@ -1,5 +1,5 @@
 from src.CNNClassifier.config.configuration import ConfigurationManager
-from CNNClassifier.components.model_evaluation_mlflow import Evaluation
+from src.CNNClassifier.components.model_evaluation_mlflow import Evaluation
 from src.CNNClassifier import logging
 
 STAGE_NAME = "Model Evaluation"
@@ -13,6 +13,7 @@ class ModelEvaluationPipeline:
         eval_config = config.get_evaluation_config()
         evaluation = Evaluation(config=eval_config)
         evaluation.Evaluation()
+        evaluation.save_score()
         evaluation.log_into_mlflow()
 
 
