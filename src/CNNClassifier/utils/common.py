@@ -60,16 +60,17 @@ def load_bin(path: Path) -> Any:
     return data
 
 
-def encodeImageIntoBase64(image_path: Path) -> str:
-    with open(image_path, "rb") as img_file:
-        b64_string = base64.b64encode(img_file.read()).decode('utf-8')
-    return b64_string
+def decodeImage(imgstring,filename):
+    imgdata=base64.b64decode(imgstring)
+    with open(filename,'wb') as f:
+        f.write(imgdata)
+        f.close()
+    
+def encodeImageIntoBase64(croppedImage) :
+    with open(croppedImage,'rb') as f:
+        return  base64.b64encode(f.read())
 
-def decodeImage(b64_string: str, output_path: Path) -> None:
-    img_data = base64.b64decode(b64_string)
-    with open(output_path, "wb") as img_file:
-        img_file.write(img_data)
-    logging.info(f"Image decoded and saved at: {output_path}")
+    
 
 def get_size(path: Path) -> str:
     size_in_kb = round(os.path.getsize(path) / 1024)
