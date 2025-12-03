@@ -1,4 +1,4 @@
-# Kidney-disease-classification
+# Classification des scanners de cancer – CNN
 
 
 
